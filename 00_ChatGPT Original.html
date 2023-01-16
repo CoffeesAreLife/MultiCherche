@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Some basic styling to make the form look nice */
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      padding: 8px 20px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* Add a style for the checkboxes container */
+    .checkboxes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <!-- The form element with a text input field and a submit button -->
+  <form id="search-form">
+    <label for="search-query">Enter a search query:</label>
+    <input type="text" id="search-query" name="search-query">
+    <br>
+    <label>Choose which search engines to use:</label>
+    <br>
+    <input type="checkbox" id="google-checkbox" name="google" value="google" checked>
+    <label for="google-checkbox">Google</label>
+    <br>
+    <input type="checkbox" id="bing-checkbox" name="bing" value="bing" checked>
+    <label for="bing-checkbox">Bing</label>
+    <br>
+    <input type="checkbox" id="duckduckgo-checkbox" name="duckduckgo" value="duckduckgo" checked>
+    <label for="duckduckgo-checkbox">DuckDuckGo</label>
+    <br>
+    <input type="submit" value="Search">
+  </form>
+
+  <!-- Load the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // When the form is submitted, open tabs to search the query on the selected search engines
+$("#search-form").submit(function(event) {
+  // Prevent the form from actually submitting (which would refresh the page)
+  event.preventDefault();
+
+  // Get the search query from the text input field
+  var searchQuery = $("#search-query").val();
+
+  // Check which search engines are selected
+  var googleSelected = $("#google-checkbox").is(":checked");
+  var bingSelected = $("#bing-checkbox").is(":checked");
+  var duckduckgoSelected = $("#duckduckgo-checkbox").is(":checked");
+
+  // Open tabs to search the query on the selected search engines
+  if (googleSelected) {
+    window.open("https://www.google.com/search?q=" + searchQuery, "_blank");
+  }
+  if (bingSelected) {
+    window.open("https://www.bing.com/search?q=" + searchQuery, "_blank");
+  }
+  if (duckduckgoSelected) {
+    window.open("https://duckduckgo.com/?q=" + searchQuery, "_blank");
+  }
+});
+</script>
+ </body> 
+</html>
