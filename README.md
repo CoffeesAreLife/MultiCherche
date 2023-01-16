@@ -10,4 +10,4 @@ How to use:
 
 Other Information:
 1. The first version of this was made with the help of ChatGPT because I barely know what I'm doing. I then built on it a lot.
-2. I wrote it in html because it works in most web browsers and html is super simple.
+2. I chose to make this in html because it works on most web browsers and html is super simple.
