@@ -1,11 +1,16 @@
 # Multi-Search
-Use multiple search engines simultaneously. 
-It was made with French-English language professionals in mind. 
-I use windows.
+Basic Information:
+1. Use multiple search engines simultaneously. 
+2. It was made with French-English language professionals in mind. 
+3. I use windows.
+
+How to make multisearch functional:
+1. Open notepad and copy the code into notepad.
+2. Save the notepad file.
+3. Rename the file extension from ".txt" to ".html".
+4. Open the .html file.
 
 How to use:
-0a. On notepad and copy the code into notepad.
-0b. Save the notepad file, then rename the file extension from ".txt" to ".html".
 1. Write what you want in the search bar.
 2. Select the search engine you want to use.
 3. Press search.
