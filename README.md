@@ -1,4 +1,4 @@
-# Multi-Search
+# MultiCherche
 Basic Information:
 1. Use multiple search engines simultaneously. 
 2. It was made with French-English language professionals in mind. 
