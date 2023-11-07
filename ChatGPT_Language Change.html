@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  <input type="radio" id="english" name="language" value="english" onclick="changeText(this.value)">
+  <label for="english">English</label>
+  
+  <input type="radio" id="french" name="language" value="french" onclick="changeText(this.value)" checked>
+  <label for="french">French</label>
+  
+  <input type="radio" id="spanish" name="language" value="spanish" onclick="changeText(this.value)">
+  <label for="spanish">Spanish</label>
+</form> 
+
+<p id="text">This sentence is in French.</p>
+
+<script>
+function changeText(value) {
+  var text = document.getElementById("text");
+  
+  if(value === "english") {
+    text.innerHTML = "This sentence is in English.";
+  }
+  else if(value === "french") {
+    text.innerHTML = "Cette phrase est en français.";
+  }
+  else if(value === "spanish") {
+    text.innerHTML = "Esta frase está en español.";
+  }
+}
+</script>
+
+</body>
+</html>
