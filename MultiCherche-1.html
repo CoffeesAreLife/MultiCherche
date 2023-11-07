@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Some basic styling to make the form look nice */
+    form {
+      flex-direction: column;
+      width: 500px;
+      margin: 0 auto;
+      border: 0px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 400px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      width: 80px;
+      padding: 8px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* Add a style for the checkboxes container */
+    .checkboxes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <!-- The form element with a text input field and a submit button -->
+  <form id="search-form">
+
+    <input type="text" id="search-query" name="search-query">
+    <input type="submit" value="Search">
+
+
+
+    <label><br><br><u>Search Engines</u></label><br>
+
+    <input type="checkbox" id="google-checkbox" name="google" value="google" checked>
+    <label for="google-checkbox">Google<br></label>
+
+    <input type="checkbox" id="bing-checkbox" name="bing" value="bing" checked>
+    <label for="bing-checkbox">Bing<br></label>
+
+    <input type="checkbox" id="duckduckgo-checkbox" name="duckduckgo" value="duckduckgo" checked>
+    <label for="duckduckgo-checkbox">DuckDuckGo<br></label>
+
+
+
+    <label><br><u>Concordance Engines</u></label><br>
+
+    <input type="checkbox" id="lingueeenfr-checkbox" name="lingueeenfr" value="lingueeenfr" checked>
+    <label for="lingueeenfr-checkbox">Linguee FR<>EN<br></label>
+
+    <input type="checkbox" id="reversoenfr-checkbox" name="reversoenfr" value="reversoenfr" checked>
+    <label for="reversoenfr-checkbox">Reverso FR<>EN<br></label>
+
+    <input type="checkbox" id="tradooitfren-checkbox" name="tradooitfren" value="tradooitfren" checked>
+    <label for="tradooitfren-checkbox">TradooIT FR>EN<br></label>
+
+    <input type="checkbox" id="tradooitenfr-checkbox" name="tradooitenfr" value="tradooitenfr" checked>
+    <label for="tradooitenfr-checkbox">TradooIT EN>FR<br></label>
+
+
+    <label><br><u>Multilingual Dictionaries & Termbases</u></label><br>
+
+    <input type="checkbox" id="termium-checkbox" name="termium" value="termium" checked>
+    <label for="termium-checkbox">Termium<br></label>
+
+    <input type="checkbox" id="gdt-checkbox" name="gdt" value="gdt" checked>
+    <label for="gdt-checkbox">Grand dictionnaire terminologique<br></label>
+
+
+  </form>
+
+  <!-- Load the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  // When the form is submitted, open tabs to search the query on the selected search engines
+$("#search-form").submit(function(event) {
+  // Prevent the form from actually submitting (which would refresh the page)
+  event.preventDefault();
+
+  // Get the search query from the text input field
+  var searchQuery = $("#search-query").val();
+
+  // Check which search engines are selected
+  var googleSelected = $("#google-checkbox").is(":checked");
+  var bingSelected = $("#bing-checkbox").is(":checked");
+  var duckduckgoSelected = $("#duckduckgo-checkbox").is(":checked");
+
+  // Check which concordance engines are selected
+  var lingueeenfrSelected = $("#lingueeenfr-checkbox").is(":checked");
+  var reversoenfrSelected = $("#reversoenfr-checkbox").is(":checked");
+  var tradooitenfrSelected = $("#tradooitenfr-checkbox").is(":checked");
+  var tradooitfrenSelected = $("#tradooitfren-checkbox").is(":checked");
+
+  // Check which termbases & multilingual dictionnaries are selected
+  var termiumSelected = $("#termium-checkbox").is(":checked");
+  var gdtSelected = $("#gdt-checkbox").is(":checked");
+
+
+  // FOR WHATEVER REASON, you need to inverse the "if" functions if you want the webpages that match up to parrallel the order of the checkboxes you need to click.
+  
+  // Open tabs to search the query on the selected concordance engines
+  if (gdtSelected) {
+    window.open("https://vitrinelinguistique.oqlf.gouv.qc.ca/resultats-de-recherche?tx_solr[filter][0]=type_stringM%3Agdt&tx_solr[q]=" + searchQuery, "_blank");
+  }
+  if (termiumSelected) {
+    window.open("https://www.btb.termiumplus.gc.ca/tpv2alpha/alpha-eng.html?lang=eng&i=1&srchtxt=" + searchQuery, "&codom2nd_wet=1#resultrecs");
+  }
+
+  // Open tabs to search the query on the selected termbases & multilingual dictionnaries
+  if (tradooitenfrSelected) {
+    window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=en&langTo=fr&q=" + searchQuery, "_blank");
+  }
+  if (tradooitfrenSelected) {
+    window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=fr&langTo=en&q=" + searchQuery, "_blank");
+  }
+  if (reversoenfrSelected) {
+    window.open("https://dictionary.reverso.net/english-french/" + searchQuery, "_blank");
+  }
+  if (lingueeenfrSelected) {
+    window.open("https://www.linguee.com/english-french/search?source=auto&query=" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the selected search engines
+  if (duckduckgoSelected) {
+    window.open("https://duckduckgo.com/?q=" + searchQuery, "_blank");
+  }
+  if (bingSelected) {
+    window.open("https://www.bing.com/search?q=" + searchQuery, "_blank");
+  }
+  if (googleSelected) {
+    window.open("https://www.google.com/search?q=" + searchQuery, "_blank");
+  }
+
+  
+});
+</script>
+ </body> 
+</html>
