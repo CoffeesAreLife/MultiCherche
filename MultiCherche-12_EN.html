@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+	.search-form-class {
+		flex-direction: column;
+		width: 500px;
+		margin: 0 auto;
+		border: 0px solid #ccc;
+		border-radius: 5px;
+	}
+	label {
+		margin-bottom: 10px;
+		font-weight: bold;
+	}
+	.sectiontitle {
+		text-decoration: underline;
+	}
+	input[type="text"] {
+		width: 400px;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	input[type="submit"] {
+		width: 40px;
+		padding: 8px;
+		border: 1px solid #333;
+		border-radius: 4px;
+		background-color: #333;
+		color: #fff;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+</style>
+</head>
+
+<body>
+	<!-- The form element with a text input field and a submit button -->
+	<form class="search-form-class" id="search-form">
+
+		<input type="radio" id="english" name="language" value="english" onclick="changeText(this.value)" checked>
+			<label for="english">English</label>
+
+		<input type="radio" id="french" name="language" value="french" onclick="changeText(this.value)">
+			<label for="french">Français</label>
+
+		<br><input type="text" id="search-query" name="search-query">
+			<input type="submit" value="🔎︎"><br>
+
+		<!-- Search Engines -->
+			<br><input type="checkbox" id="search-engines" checked>
+				<label for="search-engines" class="sectiontitle" id="searchengineslang">Moteurs de recherches</label><br>
+					<input type="checkbox" class="searcheng" id="bing-checkbox" name="bing" value="bing" checked>
+						<label for="bing-checkbox">Bing</label><br>
+					<input type="checkbox" class="searcheng" id="brave-checkbox" name="brave" value="brave" checked>
+						<label for="brave-checkbox">Brave</label><br>
+					<input type="checkbox" class="searcheng" id="duckduckgo-checkbox" name="duckduckgo" value="duckduckgo" checked>
+						<label for="duckduckgo-checkbox">DuckDuckGo</label><br>
+					<input type="checkbox" class="searcheng" id="google-checkbox" name="google" value="google" checked>
+						<label for="google-checkbox">Google</label><br>
+					<input type="checkbox" class="searcheng" id="mojeek-checkbox" name="mojeek" value="mojeek" checked>
+						<label for="mojeek-checkbox">Mojeek</label><br>
+		<!-- Article Search -->
+			<br><input type="checkbox" id="articlesearch" unchecked>
+				<label for="articlesearch" class="sectiontitle" id="articlesearchlang">Recherche de document</label><br>
+					<input type="checkbox" class="articlesearchclass" id="eRUDIT-checkbox" name="eRUDIT" value="eRUDIT" unchecked>
+						<label for="eRUDIT-checkbox">érudit</label><br>
+					<input type="checkbox" class="articlesearchclass" id="googlescholar-checkbox" name="googlescholar" value="googlescholar" unchecked>
+						<label for="googlescholar-checkbox">Google Scholar</label><br>
+					<input type="checkbox" class="articlesearchclass" id="hALOS-checkbox" name="hALOS" value="hALOS" unchecked>
+						<label for="hALOS-checkbox" id="hALOSlang">HAL science ouverte</label><br>
+					<input type="checkbox" class="articlesearchclass" id="jstor-checkbox" name="jstor" value="jstor" unchecked>
+						<label for="jstor-checkbox">JSTOR</label><br>
+					<input type="checkbox" class="articlesearchclass" id="sofiacon-checkbox" name="sofiacon" value="sofiacon" unchecked>
+						<label for="sofiacon-checkbox">Sofia (Concordia)</label><br>
+					<input type="checkbox" class="articlesearchclass" id="sPRINGER-checkbox" name="sPRINGER" value="sPRINGER" unchecked>
+						<label for="sPRINGER-checkbox">Springer Link</label><br>
+		<!-- Concordances -->
+			<br><input type="checkbox" id="concordances" unchecked>
+				<label for="concordances" class="sectiontitle" id="concordanceslang">Concordances</label><br>
+					<input type="checkbox" class="concords" id="lingueeenfr-checkbox" name="lingueeenfr" value="lingueeenfr" unchecked>
+						<label for="lingueeenfr-checkbox">Linguee (FR<>EN)</label><br>
+					<input type="checkbox" class="concords" id="reversoenfr-checkbox" name="reversoenfr" value="reversoenfr" unchecked>
+						<label for="reversoenfr-checkbox">Reverso (FR<>EN)</label><br>
+					<input type="checkbox" class="concords" id="tRdooitFREN-checkbox" name="tRdooitFREN" value="tRdooitFREN" unchecked>
+						<label for="tRdooitFREN-checkbox">TradooIT (FR=>EN)</label><br>
+					<input type="checkbox" class="concords" id="tRadooitENFR-checkbox" name="tRadooitENFR" value="tRadooitENFR" unchecked>
+						<label for="tRadooitENFR-checkbox">TradooIT (EN=>FR)</label><br>
+					<input type="checkbox" class="concords" id="wordrefenfr-checkbox" name="wordrefenfr" value="wordrefenfr" unchecked>
+						<label for="wordrefenfr-checkbox">WordReference (EN<>FR)</label><br>
+		<!-- Multilingual Definitions & Terms -->
+			<br><input type="checkbox" id="multermbases" unchecked>
+				<label for="multermbases" class="sectiontitle" id="multermbaseslang">Termes multilingues</label><br>
+					<input type="checkbox" class="multermbaseclass" id="cambridgeenfr-checkbox" name="cambridgeenfr" value="cambridgeenfr" unchecked>
+						<label for="cambridgeenfr-checkbox">Cambridge Dictionnary (EN=>FR)</label><br>
+					<input type="checkbox" class="multermbaseclass" id="cambridgefren-checkbox" name="cambridgefren" value="cambridgefren" unchecked>
+						<label for="cambridgefren-checkbox">Cambridge Dictionnary (FR=>EN)</label><br>
+					<input type="checkbox" class="multermbaseclass" id="collinsenfr-checkbox" name="collinsenfr" value="collinsenfr" unchecked>
+						<label for="collinsenfr-checkbox">Collins (EN=>FR)</label><br>
+					<input type="checkbox" class="multermbaseclass" id="collinsfren-checkbox" name="collinsfren" value="collinsfren" unchecked>
+						<label for="collinsfren-checkbox">Collins (FR=>EN)</label><br>
+					<input type="checkbox" class="multermbaseclass" id="gdt-checkbox" name="gdt" value="gdt" unchecked>
+						<label for="gdt-checkbox" id="gdtlang">Grand dictionnaire terminologique (EN, FR et plus)</label><br>
+					<input type="checkbox" class="multermbaseclass" id="termium-checkbox" name="termium" value="termium" unchecked>
+						<label for="termium-checkbox" id="termiumlang">Termium (EN, FR et plus)</label><br>
+		<!-- English Definitions & Terms -->
+			<br><input type="checkbox" id="entermbases" unchecked>
+				<label for="entermbases" class="sectiontitle" id="entermbaseslang">Concepts, définitions & termes anglais</label><br>
+					<input type="checkbox" class="entermbaseclass" id="collinen-checkbox" name="collinen" value="collinen" unchecked>
+						<label for="collinen-checkbox">Collins</label><br>
+					<input type="checkbox" class="entermbaseclass" id="encybrit-checkbox" name="encybrit" value="encybrit" unchecked>
+						<label for="encybrit-checkbox">Encyclopedia Britannica</label><br>
+					<input type="checkbox" class="entermbaseclass" id="wikien-checkbox" name="wikien" value="wikien" unchecked>
+						<label for="wikien-checkbox">Wikipedia</label><br>
+		<!-- English Thesauri -->
+			<br><input type="checkbox" id="enthesauruses" unchecked>
+				<label for="enthesauruses" class="sectiontitle" id="enthesauruseslang">Synonymes anglais</label><br>
+					<input type="checkbox" class="enthesauri" id="collinsthes-checkbox" name="collinsthes" value="collinsthes" unchecked>
+						<label for="collinsthes-checkbox">Collins</label><br>
+					<input type="checkbox" class="enthesauri" id="merwebthes-checkbox" name="merwebthes" value="merwebthes" unchecked>
+						<label for="merwebthes-checkbox">Merriam-Webster</label><br>
+					<input type="checkbox" class="enthesauri" id="enreversosyn-checkbox" name="enreversosyn" value="enreversosyn" unchecked>
+						<label for="enreversosyn-checkbox">Reverso</label><br>
+					<input type="checkbox" class="enthesauri" id="thesaurus-checkbox" name="thesaurus" value="thesaurus" unchecked>
+						<label for="thesaurus-checkbox">Thesaurus.com</label><br>
+		<!-- French Terms & Concepts -->
+			<br><input type="checkbox" id="frtermbases" unchecked>
+				<label for="frtermbases" class="sectiontitle" id="frtermbaseslang">Concepts, définitions & termes français</label><br>
+					<input type="checkbox" class="frtermbaseclass" id="lerobert-checkbox" name="lerobert" value="lerobert" unchecked>
+						<label for="lerobert-checkbox">Le Robert</label><br>
+					<input type="checkbox" class="frtermbaseclass" id="wikifr-checkbox" name="wikifr" value="wikifr" unchecked>
+						<label for="wikifr-checkbox">Wikipédia</label><br>
+		<!-- French Conjugations & Coocurences -->
+			<br><input type="checkbox" id="frconjug" unchecked>
+				<label for="frconjug" class="sectiontitle" id="frconjuglang">Conjugaisons, cooccurrences, synonymes etc. français</label><br>
+					<input type="checkbox" class="frconjugclass" id="bescherelle-checkbox" name="bescherelle" value="bescherelle" unchecked>
+						<label for="bescherelle-checkbox" id="bescherellelang">Bescherelle (utiliser l'infinitif)</label><br>
+					<input type="checkbox" class="frconjugclass" id="dicdescooc-checkbox" name="dicdescooc" value="dicdescooc" unchecked>
+						<label for="dicdescooc-checkbox">Dictionnaire des coocurences</label><br>
+					<input type="checkbox" class="frconjugclass" id="frreversosyn-checkbox" name="frreversosyn" value="dicdescooc" unchecked>
+						<label for="frreversosyn-checkbox">Reverso</label><br>
+		<!-- Grammar & Language Rules -->
+			<br><input type="checkbox" id="grammar" unchecked>
+				<label for="grammar" class="sectiontitle" id="grammarlang">Information grammaticale</label><br>
+					<input type="checkbox" class="grammarclass" id="bdl-checkbox" name="bdl" value="bdl" unchecked>
+						<label for="bdl-checkbox">Banque de dépannage linguistique (FR)</label><br>
+					<input type="checkbox" class="grammarclass" id="languagenavigator-checkbox" name="languagenavigator" value="languagenavigator" unchecked>
+						<label for="languagenavigator-checkbox" id="languagenavigatorlang">Language Navigator (EN, FR et plus)</label><br>
+					<input type="checkbox" class="grammarclass" id="leguidedured-checkbox" name="leguidedured" value="leguidedured" unchecked>
+						<label for="leguidedured-checkbox">Le guide du rédacteur (FR)</label><br>
+					<input type="checkbox" class="grammarclass" id="thecanstyle-checkbox" name="thecanstyle" value="thecanstyle" unchecked>
+						<label for="thecanstyle-checkbox">The Canadian Style (EN)</label><br>
+		<!-- Videos -->
+			<br><input type="checkbox" id="vIDEO" unchecked>
+				<label for="vIDEO" class="sectiontitle" id="vIDEOlang">Vidéos</label><br>
+					<input type="checkbox" class="vIDEOclass" id="dAILYMOTION-checkbox" name="dAILYMOTION" value="dAILYMOTION" unchecked>
+						<label for="dAILYMOTION-checkbox">Dailymotion</label><br>
+					<input type="checkbox" class="vIDEOclass" id="vIMEO-checkbox" name="vIMEO" value="vIMEO" unchecked>
+						<label for="vIMEO-checkbox">Vimeo</label><br>
+					<input type="checkbox" class="vIDEOclass" id="youtube-checkbox" name="youtube" value="youtube" unchecked>
+						<label for="youtube-checkbox">YouTube</label><br>
+
+		<!-- Internet Archive -->
+			<br><input type="checkbox" id="internach" unchecked>
+				<label for="internach" class="sectiontitle">Internet Archive</label><br>
+					<input type="checkbox" class="internarchclass" id="internarchMETADA-checkbox" name="internarchMETADA" value="internarchMETADA" unchecked>
+						<label for="internarchMETADA-checkbox" id="internarchMETADAlang">Métadonnées</label><br>
+					<input type="checkbox" class="internarchclass" id="internarchRADIO-checkbox" name="internarchRADIO" value="internarchRADIO" unchecked>
+						<label for="internarchRADIO-checkbox" id="internarchRADIOlang">Archive de Radio</label><br>
+					<input type="checkbox" class="internarchclass" id="internarchTEXT-checkbox" name="internarchTEXT" value="internarchTEXT" unchecked>
+						<label for="internarchTEXT-checkbox" id="internarchTEXTlang">Contenu de Texte</label><br>
+					<input type="checkbox" class="internarchclass" id="internarchTVNEWS-checkbox" name="internarchTVNEWS" value="internarchTVNEWS" unchecked>
+						<label for="internarchTVNEWS-checkbox" id="internarchTVNEWSlang">Archive des Nouvelles Télévisées</label><br>
+					<input type="checkbox" class="internarchclass" id="internarchWAYBACK-checkbox" name="internarchWAYBACK" value="internarchWAYBACK" unchecked>
+						<label for="internarchWAYBACK-checkbox">Wayback Machine</label><br>
+		<!-- Other Search Options -->
+			<br><input type="checkbox" id="otherautre" unchecked>
+				<label for="otherautre" class="sectiontitle" id="otherautrelang">Autre</label><br>
+					<input type="checkbox" class="otherautreclass" id="canliien-checkbox" name="canliien" value="canliien" unchecked>
+						<label for="canliien-checkbox">CanLII (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="canliifr-checkbox" name="canliifr" value="canliifr" unchecked>
+						<label for="canliifr-checkbox">CanLII (FR)</label><br>
+					<input type="checkbox" class="otherautreclass" id="europeana-checkbox" name="europeana" value="europeana" unchecked>
+						<label for="europeana-checkbox">Europeana</label><br>
+					<input type="checkbox" class="otherautreclass" id="figshare-checkbox" name="figshare" value="figshare" unchecked>
+						<label for="figshare-checkbox">figshare</label><br>
+					<input type="checkbox" class="otherautreclass" id="github-checkbox" name="github" value="github" unchecked>
+						<label for="github-checkbox">GitHub</label><br>
+					<input type="checkbox" class="otherautreclass" id="inatur-checkbox" name="inatur" value="inatur" unchecked>
+						<label for="inatur-checkbox" id="inaturlang">iNaturalist (EN, FR et plus)</label><br>
+					<input type="checkbox" class="otherautreclass" id="investopedia-checkbox" name="investopedia" value="investopedia" unchecked>
+						<label for="investopedia-checkbox">Investopedia (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="merckprofen-checkbox" name="merckprofen" value="merckprofen" unchecked>
+						<label for="merckprofen-checkbox" id="merckprofenlang">Le Manuel Merck - Édition professionel (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="merckproffr-checkbox" name="merckproffr" value="merckproffr" unchecked>
+						<label for="merckproffr-checkbox" id="merckproffrlang">Le Manuel Merck - Édition professionel (FR)</label><br>
+					<input type="checkbox" class="otherautreclass" id="theencycan-checkbox" name="theencycan" value="theencycan" unchecked>
+						<label for="theencycan-checkbox" id="theencycanlang">L'Encyclopédie canadienne (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="lenccan-checkbox" name="lenccan" value="lenccan" unchecked>
+						<label for="lenccan-checkbox" id="lenccanlang">L'Encyclopédie canadienne (FR)</label><br>
+					<input type="checkbox" class="otherautreclass" id="microsoftstyle-checkbox" name="microsoftstyle" value="microsoftstyle" unchecked>
+						<label for="microsoftstyle-checkbox" id="microsoftstylelang">Microsoft - Guide de style & banque de terminologie (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="nasa-checkbox" name="nasa" value="nasa" unchecked>
+						<label for="nasa-checkbox">NASA (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="openverse-checkbox" name="openverse" value="openverse" unchecked>
+						<label for="openverse-checkbox">Openverse</label><br>
+					<input type="checkbox" class="otherautreclass" id="statcanen-checkbox" name="statcanen" value="statcanen" unchecked>
+						<label for="statcanen-checkbox">StatCan (EN)</label><br>
+					<input type="checkbox" class="otherautreclass" id="statcanfr-checkbox" name="statcanfr" value="statcanfr" unchecked>
+						<label for="statcanfr-checkbox">StatCan (FR)</label><br>
+	</form>
+<!-- License & GitHub -->
+<br><br>
+	<form  style="border: 2px solid; border-color:black; padding:12px;"><form>
+		<p style="margin:0px; padding:0px;"><b><span id="gitHubRepLang">GitHub Repository:</span></b> <a href="https://github.com/CoffeesAreLife/MultiCherche">https://github.com/CoffeesAreLife/MultiCherche</a></p>
+		<br>
+		<button onclick="CC0LicenseButton()"><b>CC0 1.0 Universal License</b></button>
+	</form></form>
+
+
+<!-- Script -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		<!-- Language changing -->
+			function changeText(value) {
+				if(value === "english") {
+					<!-- Search Engines -->
+						searchengineslang.innerHTML = "Search Engines";
+					<!-- Article Search -->
+						articlesearchlang.innerHTML = "Document Search";
+						hALOSlang.innerHTML = "HAL open science";
+					<!-- Concordances -->
+						concordanceslang.innerHTML = "Concordances";
+					<!-- Multilingual Definitions & Terms -->
+						multermbaseslang.innerHTML = "Multilingual Terms";
+						gdtlang.innerHTML = "Grand dictionnaire terminologique (EN, FR and more)";
+						termiumlang.innerHTML = "Termium (EN, FR and more)";
+					<!-- English Definitions & Terms -->
+						entermbaseslang.innerHTML = "English Concepts, Definitions & Terms";
+					<!-- English Thesauri -->
+						enthesauruseslang.innerHTML = "English Synonyms";
+					<!-- French Terms & Concepts -->
+						frtermbaseslang.innerHTML = "French Concepts, Definitions & Terms";
+					<!-- French Conjugations & Coocurences -->
+						frconjuglang.innerHTML = "French Conjugation, Co-occurrences, Synonyms, etc.";
+						bescherellelang.innerHTML = "Bescherelle (use the infinitive)";
+					<!-- Grammar & Language Rules -->
+						grammarlang.innerHTML = "Grammatical Information";
+						languagenavigatorlang.innerHTML = "Language Navigator (EN, FR and more)";
+					<!-- Videos -->
+						vIDEOlang.innerHTML = "Videos";
+					<!-- Internet Archive -->
+						internarchMETADAlang.innerHTML = "Metadata";
+						internarchRADIOlang.innerHTML = "Radio Archive";
+						internarchTEXTlang.innerHTML = "Text Contents";
+						internarchTVNEWSlang.innerHTML = "TV News Archive";
+					<!-- Other Search Options -->
+						otherautrelang.innerHTML = "Other";
+						inaturlang.innerHTML = "iNaturalist (EN, FR and more)";
+						merckprofenlang.innerHTML = "Merck Manual - Professional Edition (EN)";
+						mmerckproffrlang.innerHTML = "Merck Manual - Professional Edition (FR)";
+						theencycanlang.innerHTML = "The Canadian Encyclopedia (EN)";
+						lenccanlang.innerHTML = "The Canadian Encyclopedia (FR)";
+						microsoftstylelang.innerHTML = "Microsoft - Style Guide & Termbase (EN)";
+					<!-- License & GitHub -->
+					<!-- I can't seem to get the language change for the GitHub Repository title to work. -->
+						gitHubRepLang.innerHTML = "GitHub Repository:";
+				} else if(value === "french") {
+					<!-- Search Engines -->
+						searchengineslang.innerHTML = "Moteurs de recherches";
+					<!-- Article Search -->
+						articlesearchlang.innerHTML = "Recherche de document";
+						hALOSlang.innerHTML = "HAL science ouvert";
+					<!-- Concordances -->
+						concordanceslang.innerHTML = "Concordances";
+					<!-- Multilingual Definitions & Terms -->
+						multermbaseslang.innerHTML = "Termes multilingues";
+						gdtlang.innerHTML = "Grand dictionnaire terminologique (EN, FR et plus)";
+						termiumlang.innerHTML = "Termium (EN, FR et plus)";
+					<!-- English Definitions & Terms -->
+						entermbaseslang.innerHTML = "Concepts, définitions & termes anglais";
+					<!-- English Thesauri -->
+						enthesauruseslang.innerHTML = "Synonymes anglais";
+					<!-- French Terms & Concepts -->
+						frtermbaseslang.innerHTML = "Concepts, définitions & termes français";
+					<!-- French Conjugations & Coocurences -->
+						frconjuglang.innerHTML = "Conjugaison, cooccurrences, synonymes, etc. français";
+						bescherellelang.innerHTML = "Bescherelle (utiliser l'infinitif)";
+					<!-- Grammar & Language Rules -->
+						grammarlang.innerHTML = "Information grammaticale";
+						languagenavigatorlang.innerHTML = "Language Navigator (EN, FR et plus)";
+					<!-- Videos -->
+						vIDEOlang.innerHTML = "Vidéos";
+					<!-- Internet Archive -->
+						internarchMETADAlang.innerHTML = "Métadonnées";
+						internarchRADIOlang.innerHTML = "Archive de Radio";
+						internarchTEXTlang.innerHTML = "Contenu de Texte";
+						internarchTVNEWSlang.innerHTML = "Archive des Nouvelles Télévisées";
+					<!-- Other Search Options -->
+						otherautrelang.innerHTML = "Autre";
+						inaturlang.innerHTML = "iNaturalist (EN, FR et plus)";
+						merckprofenlang.innerHTML = "Le Manuel Merck - Édition professionel (EN)";
+						mmerckproffrlang.innerHTML = "Le Manuel Merck - Édition professionel (FR)";
+						theencycanlang.innerHTML = "L'Encyclopédie canadienne (EN)";
+						lenccanlang.innerHTML = "L'Encyclopédie canadienne (FR)";
+						microsoftstylelang.innerHTML = "Microsoft - Guide de style & banque de terminologie (EN)";
+					<!-- License & GitHub -->
+						gitHubRepLang.innerHTML = "Répertoire GitHub :";
+						
+				}
+			}
+
+		<!-- Select or unselect everything in a section. -->
+			<!-- Search Engines -->
+				$("#search-engines").click(function() {
+					if ($(this).is(":checked")) {$(".searcheng").prop("checked", true);} 
+					else {$(".searcheng").prop("checked", false);}
+				});
+			<!-- Article Search -->
+				$("#articlesearch").click(function() {
+					if ($(this).is(":checked")) {$(".articlesearchclass").prop("checked", true);}
+					else {$(".articlesearchclass").prop("checked", false);}
+				});
+			<!-- Concordances -->
+				$("#concordances").click(function() {
+					if ($(this).is(":checked")) {$(".concords").prop("checked", true);}
+					else {$(".concords").prop("checked", false);}
+				});
+			<!-- Multilingual Definitions & Terms -->
+				$("#multermbases").click(function() {
+					if ($(this).is(":checked")) {$(".multermbaseclass").prop("checked", true);}
+					else {$(".multermbaseclass").prop("checked", false);}
+				});
+			<!-- English Definitions & Terms -->
+				$("#entermbases").click(function() {
+					if ($(this).is(":checked")) {$(".entermbaseclass").prop("checked", true);}
+					else {$(".entermbaseclass").prop("checked", false);}
+				});
+			<!-- English Thesauri -->
+				$("#enthesauruses").click(function() {
+					if ($(this).is(":checked")) {$(".enthesauri").prop("checked", true);}
+					else {$(".enthesauri").prop("checked", false);}
+				});
+			<!-- French Terms & Concepts -->
+				$("#frtermbases").click(function() {
+					if ($(this).is(":checked")) {$(".frtermbaseclass").prop("checked", true);}
+					else {$(".frtermbaseclass").prop("checked", false);}
+				});
+			<!-- French Conjugations & Coocurences -->
+				$("#frconjug").click(function() {
+					if ($(this).is(":checked")) {$(".frconjugclass").prop("checked", true);} 
+					else {$(".frconjugclass").prop("checked", false);}
+				});
+			<!-- Grammar & Language Rules -->
+				$("#grammar").click(function() {
+					if ($(this).is(":checked")) {$(".grammarclass").prop("checked", true);}
+					else {$(".grammarclass").prop("checked", false);}
+				});
+			<!-- Videos -->
+				$("#vIDEO").click(function() {
+					if ($(this).is(":checked")) {$(".vIDEOclass").prop("checked", true);}
+					else {$(".vIDEOclass").prop("checked", false);}
+				});
+			<!-- Internet Archive -->
+				$("#internach").click(function() {
+					if ($(this).is(":checked")) {$(".internarchclass").prop("checked", true);}
+					else {$(".internarchclass").prop("checked", false);}
+				});
+			<!-- Other Search Options -->
+				$("#otherautre").click(function() {
+					if ($(this).is(":checked")) {$(".otherautreclass").prop("checked", true);}
+					else {$(".otherautreclass").prop("checked", false);}
+				});
+
+		<!-- When the search query is submitted, tabs open searching the query on the selected search engines. -->
+		<!-- FOR WHATEVER REASON, the "if" functions open up tabs in the opposite order from what I want, which is why they are all inversed below. -->
+			$("#search-form").submit(function(event) {
+
+				event.preventDefault();
+				var searchQuery = $("#search-query").val();
+
+				<!-- Other Search Options -->
+					var statcanfrSelected = $("#statcanfr-checkbox").is(":checked");
+						if (statcanfrSelected) {window.open("https://www.statcan.gc.ca/recherche/resultats/site-recherche?fq=stclac:2&sort=score%20desc&rows=25&page=1&q=" + searchQuery, "_blank");}
+					var statcanenSelected = $("#statcanen-checkbox").is(":checked");
+						if (statcanenSelected) {window.open("https://www.statcan.gc.ca/search/results/site-search?fq=stclac:2&sort=score%20desc&rows=25&page=1&q=" + searchQuery, "_blank");}
+					var openverseSelected = $("#openverse-checkbox").is(":checked");
+						if (openverseSelected) {window.open("https://wordpress.org/openverse/search/?q=" + searchQuery, "_blank");}
+					var nasaSelected = $("#nasa-checkbox").is(":checked");
+						if (nasaSelected) {window.open("https://nasasearch.nasa.gov/search?affiliate=nasa&utf8=%E2%9C%93&query=" + searchQuery, "_blank");}
+					var microsoftstyleSelected = $("#microsoftstyle-checkbox").is(":checked");
+						if (microsoftstyleSelected) {window.open("https://learn.microsoft.com/en-us/search/?scope=Style%20guide&terms=" + searchQuery, "_blank");}
+					var theencycanSelected = $("#theencycan-checkbox").is(":checked");
+						if (theencycanSelected) {window.open("https://www.thecanadianencyclopedia.ca/en/search?search=" + searchQuery, "_blank");}
+					var lenccanSelected = $("#lenccan-checkbox").is(":checked");
+						if (lenccanSelected) {window.open("https://www.thecanadianencyclopedia.ca/fr/cherchez?search=" + searchQuery, "_blank");}
+					var merckproffrSelected = $("#merckproffr-checkbox").is(":checked");
+						if (merckproffrSelected) {window.open("https://www.merckmanuals.com/fr-ca/professional/SearchResults?query=" + searchQuery, "_blank");}
+					var merckprofenSelected = $("#merckprofen-checkbox").is(":checked");
+						if (merckprofenSelected) {window.open("https://www.merckmanuals.com/en-ca/professional/SearchResults?query=" + searchQuery, "_blank");}
+					var investopediaSelected = $("#investopedia-checkbox").is(":checked");
+						if (investopediaSelected) {window.open("https://www.investopedia.com/search?q=" + searchQuery, "_blank");}
+					var inaturSelected = $("#inatur-checkbox").is(":checked");
+						if (inaturSelected) {window.open("https://www.inaturalist.org/search?q=" + searchQuery, "_blank");}
+					var githubSelected = $("#github-checkbox").is(":checked");
+						if (githubSelected) {window.open("https://github.com/search?q=" + searchQuery, "_blank");}
+					var figshareSelected = $("#figshare-checkbox").is(":checked");
+						if (figshareSelected) {window.open("https://figshare.com/search?q=" + searchQuery, "_blank");}
+					var europeanaSelected = $("#europeana-checkbox").is(":checked");
+						if (europeanaSelected) {window.open("https://www.europeana.eu/en/search?page=1&view=grid&query=" + searchQuery, "_blank");}
+					var canliifrSelected = $("#canliifr-checkbox").is(":checked");
+						if (canliifrSelected) {window.open("https://www.canlii.org/fr/#search/text=" + searchQuery, "_blank");}
+					var canliienSelected = $("#canliien-checkbox").is(":checked");
+						if (canliienSelected) {window.open("https://www.canlii.org/en/#search/text=" + searchQuery, "_blank");}
+				<!-- Internet Archive -->
+					var internarchWAYBACKSelected = $("#internarchWAYBACK-checkbox").is(":checked");
+						if (internarchWAYBACKSelected) {window.open("https://web.archive.org/web/*/" + searchQuery, "_blank");}
+					var internarchTVNEWSSelected = $("#internarchTVNEWS-checkbox").is(":checked");
+						if (internarchTVNEWSSelected) {window.open("https://archive.org/details/tv?q=" + searchQuery, "_blank");}
+					var internarchTEXTSelected = $("#internarchTEXT-checkbox").is(":checked");
+						if (internarchTEXTSelected) {window.open("https://archive.org/search?sin=TXT&query=" + searchQuery, "_blank");}
+					var internarchRADIOSelected = $("#internarchRADIO-checkbox").is(":checked");
+						if (internarchRADIOSelected) {window.open("https://archive.org/search.php?sin=RADIO&query=" + searchQuery, "_blank");}
+					var internarchMETADASelected = $("#internarchMETADA-checkbox").is(":checked");
+						if (internarchMETADASelected) {window.open("https://archive.org/search.php?sin=&query=" + searchQuery, "_blank");}
+				<!-- Videos -->
+					var youtubeSelected = $("#youtube-checkbox").is(":checked");
+						if (youtubeSelected) {window.open("https://www.youtube.com/results?search_query=" + searchQuery, "_blank");}
+					var vIMEOSelected = $("#vIMEO-checkbox").is(":checked");
+						if (vIMEOSelected) {window.open("https://vimeo.com/search?q=" + searchQuery, "_blank");}
+					var dAILYMOTIONSelected = $("#dAILYMOTION-checkbox").is(":checked");
+						if (dAILYMOTIONSelected) {window.open("https://www.dailymotion.com/search/" + searchQuery, "/videos");}
+				<!-- Grammar & Language Rules -->
+					var thecanstyleSelected = $("#thecanstyle-checkbox").is(":checked");
+						if (thecanstyleSelected) {window.open("https://www.btb.termiumplus.gc.ca/tcdnstyl-srch?lang=eng&i=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");}
+					var leguideduredSelected = $("#leguidedured-checkbox").is(":checked");
+						if (leguideduredSelected) {window.open("https://www.btb.termiumplus.gc.ca/redac-srch?lang=eng&i=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");}
+					var languagenavigatorSelected = $("#languagenavigator-checkbox").is(":checked");
+						if (languagenavigatorSelected) {window.open("https://www.noslangues-ourlanguages.gc.ca/en/navigateur-navigator?search_api_views_fulltext=" + searchQuery, "&sort_by=search_api_relevance#resultats-recherche-search-results");}
+					var bdlSelected = $("#bdl-checkbox").is(":checked");
+						if (bdlSelected) {window.open("https://vitrinelinguistique.oqlf.gouv.qc.ca/resultats-de-recherche?tx_solr%5Bfilter%5D%5B0%5D=type_stringM%253Abdl&tx_solr%5Bfilter%5D%5B2%5D=terme%253A1&tx_solr%5Bq%5D=" + searchQuery, "_blank");}
+				<!-- French Conjugations & Coocurences -->
+					var frreversosynSelected = $("#frreversosyn-checkbox").is(":checked");
+						if (frreversosynSelected) {window.open("https://synonyms.reverso.net/synonyme/fr/" + searchQuery, "_blank");}
+					var dicdescoocSelected = $("#dicdescooc-checkbox").is(":checked");
+						if (dicdescoocSelected) {window.open("https://www.btb.termiumplus.gc.ca/cooc-srch?lang=fra&i=&lettr=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");}
+					var bescherelleSelected = $("#bescherelle-checkbox").is(":checked");
+						if (bescherelleSelected) {window.open("https://conjugaison.bescherelle.com/verbes/" + searchQuery, "_blank");}
+				<!-- French Terms & Concepts -->
+					var wikifrSelected = $("#wikifr-checkbox").is(":checked");
+						if (wikifrSelected) {window.open("https://fr.wikipedia.org/wiki/" + searchQuery, "_blank");}
+					var lerobertSelected = $("#lerobert-checkbox").is(":checked");
+						if (lerobertSelected) {window.open("https://dictionnaire.lerobert.com/definition/" + searchQuery, "_blank");}
+				<!-- English Thesauri -->
+					var thesaurusSelected = $("#thesaurus-checkbox").is(":checked");
+						if (thesaurusSelected) {window.open("https://www.thesaurus.com/browse/" + searchQuery, "_blank");}
+					var enreversosynSelected = $("#enreversosyn-checkbox").is(":checked");
+						if (enreversosynSelected) {window.open("https://synonyms.reverso.net/synonym/en/" + searchQuery, "_blank");}
+					var merwebthesSelected = $("#merwebthes-checkbox").is(":checked");
+						if (merwebthesSelected) {window.open("https://www.merriam-webster.com/thesaurus/" + searchQuery, "_blank");}
+					var collinsthesSelected = $("#collinsthes-checkbox").is(":checked");
+						if (collinsthesSelected) {window.open("https://www.collinsdictionary.com/dictionary/english-thesaurus/" + searchQuery, "_blank");}
+				<!-- English Definitions & Terms -->
+					var wikienSelected = $("#wikien-checkbox").is(":checked");
+						if (wikienSelected) {window.open("https://en.wikipedia.org/wiki/" + searchQuery, "_blank");}
+					var encybritSelected = $("#encybrit-checkbox").is(":checked");
+						if (encybritSelected) {window.open("https://www.britannica.com/search?query=" + searchQuery, "_blank");}
+					var collinenSelected = $("#collinen-checkbox").is(":checked");
+						if (collinenSelected) {window.open("https://www.collinsdictionary.com/dictionary/english/" + searchQuery, "_blank");}
+				<!-- Multilingual Definitions & Terms -->
+					var termiumSelected = $("#termium-checkbox").is(":checked");
+						if (termiumSelected) {window.open("https://www.btb.termiumplus.gc.ca/tpv2alpha/alpha-eng.html?lang=eng&i=1&srchtxt=" + searchQuery, "&codom2nd_wet=1#resultrecs");}
+					var gdtSelected = $("#gdt-checkbox").is(":checked");
+						if (gdtSelected) {window.open("https://vitrinelinguistique.oqlf.gouv.qc.ca/resultats-de-recherche?tx_solr[filter][1]=type_stringM%3Agdt&tx_solr[filter][2]=terme%3A1&tx_solr[q]=" + searchQuery, "_blank");}
+					var collinsfrenSelected = $("#collinsfren-checkbox").is(":checked");
+						if (collinsfrenSelected) {window.open("https://www.collinsdictionary.com/dictionary/french-english/" + searchQuery, "_blank");}
+					var collinsenfrSelected = $("#collinsenfr-checkbox").is(":checked");
+						if (collinsenfrSelected) {window.open("https://www.collinsdictionary.com/dictionary/english-french/" + searchQuery, "_blank");}
+					var cambridgefrenSelected = $("#cambridgefren-checkbox").is(":checked");
+						if (cambridgefrenSelected) {window.open("https://dictionary.cambridge.org/dictionary/french-english/" + searchQuery, "_blank");}
+					var cambridgeenfrSelected = $("#cambridgeenfr-checkbox").is(":checked");
+						if (cambridgeenfrSelected) {window.open("https://dictionary.cambridge.org/dictionary/english-french/" + searchQuery, "_blank");}
+				<!-- Concordances -->
+					var wordrefenfrSelected = $("#wordrefenfr-checkbox").is(":checked");
+						if (wordrefenfrSelected) {window.open("https://www.wordreference.com/enfr/" + searchQuery, "_blank");}
+					var tRadooitENFRSelected = $("#tRadooitENFR-checkbox").is(":checked");
+						if (tRadooitENFRSelected) {window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=en&langTo=fr&q=" + searchQuery, "_blank");}
+					var tRdooitFRENSelected = $("#tRdooitFREN-checkbox").is(":checked");
+						if (tRdooitFRENSelected) {window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=fr&langTo=en&q=" + searchQuery, "_blank");}
+					var reversoenfrSelected = $("#reversoenfr-checkbox").is(":checked");
+						if (reversoenfrSelected) {window.open("https://dictionary.reverso.net/english-french/" + searchQuery, "_blank");}
+					var lingueeenfrSelected = $("#lingueeenfr-checkbox").is(":checked");
+						if (lingueeenfrSelected) {window.open("https://www.linguee.com/english-french/search?source=auto&query=" + searchQuery, "_blank");}
+				<!-- Article Search -->
+					var sPRINGERSelected = $("#sPRINGER-checkbox").is(":checked");
+						if (sPRINGERSelected) {window.open("https://link.springer.com/search?new-search=true&query=" + searchQuery, "_blank");}
+					var sofiaconSelected = $("#sofiacon-checkbox").is(":checked");
+						if (sofiaconSelected) {window.open("https://concordiauniversity.on.worldcat.org/search?databaseList=&queryString=" + searchQuery, "_blank");}
+					var jstorSelected = $("#jstor-checkbox").is(":checked");
+						if (jstorSelected) {window.open("https://www.jstor.org/action/doBasicSearch?Query=" + searchQuery, "_blank");}
+					var hALOSSelected = $("#hALOS-checkbox").is(":checked");
+						if (hALOSSelected) {window.open("https://hal.science/search/index?q=" + searchQuery, "_blank");}
+					var googlescholarSelected = $("#googlescholar-checkbox").is(":checked");
+						if (googlescholarSelected) {window.open("https://scholar.google.ca/scholar?hl=en&as_sdt=0%2C5&btnG=&q=" + searchQuery, "_blank");}
+					var eRUDITSelected = $("#eRUDIT-checkbox").is(":checked");
+						if (eRUDITSelected) {window.open("https://www.erudit.org/recherche/?funds=%C3%89rudit&funds=UNB&basic_search_term=" + searchQuery, "_blank");}
+				<!-- Search Engines -->
+					var mojeekSelected = $("#mojeek-checkbox").is(":checked");
+						if (mojeekSelected) {window.open("https://www.mojeek.com/search?q=" + searchQuery, "_blank");}
+					var googleSelected = $("#google-checkbox").is(":checked");
+						if (googleSelected) {window.open("https://www.google.com/search?q=" + searchQuery, "_blank");}
+					var duckduckgoSelected = $("#duckduckgo-checkbox").is(":checked");
+						if (duckduckgoSelected) {window.open("https://duckduckgo.com/?q=" + searchQuery, "_blank");}
+					var braveSelected = $("#brave-checkbox").is(":checked");
+						if (braveSelected) {window.open("https://search.brave.com/search?source=web&q=" + searchQuery, "_blank");}
+					var bingSelected = $("#bing-checkbox").is(":checked");
+						if (bingSelected) {window.open("https://www.bing.com/search?q=" + searchQuery, "_blank");}
+
+			});
+
+
+		<!-- License & GitHub -->
+			function CC0LicenseButton() {
+				alert(
+					"Creative Commons Legal Code\n\nCC0 1.0 Universal\n\nCREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS INFORMATION ON AN 'AS-IS' BASIS. CREATIVE COMMONS MAKES NO WARRANTIES REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER.\n\nStatement of Purpose\n\nThe laws of most jurisdictions throughout the world automatically confer exclusive Copyright and Related Rights (defined below) upon the creator and subsequent owner(s) (each and all, an ''owner'') of an original work of authorship and/or a database (each, a ''Work'').\n\nCertain owners wish to permanently relinquish those rights to a Work for the purpose of contributing to a commons of creative, cultural and scientific works (''Commons'') that the public can reliably and without fear of later claims of infringement build upon, modify, incorporate in other works, reuse and redistribute as freely as possible in any form whatsoever and for any purposes, including without limitation commercial purposes. These owners may contribute to the Commons to promote the ideal of a free culture and the further production of creative, cultural and scientific works, or to gain reputation or greater distribution for their Work in part through the use and efforts of others.\n\nFor these and/or other purposes and motivations, and without any expectation of additional consideration or compensation, the person associating CC0 with a Work (the ''Affirmer''), to the extent that he or she is an owner of Copyright and Related Rights in the Work, voluntarily elects to apply CC0 to the Work and publicly distribute the Work under its terms, with knowledge of his or her Copyright and Related Rights in the Work and the meaning and intended legal effect of CC0 on those rights.\n\n1. Copyright and Related Rights. A Work made available under CC0 may be protected by copyright and related or neighboring rights (''Copyright and Related Rights''). Copyright and Related Rights include, but are not limited to, the following:\n\ni. the right to reproduce, adapt, distribute, perform, display, communicate, and translate a Work;\nii. moral rights retained by the original author(s) and/or performer(s);\niii. publicity and privacy rights pertaining to a person's image or likeness depicted in a Work;\niv. rights protecting against unfair competition in regards to a Work, subject to the limitations in paragraph 4(a), below;\nv. rights protecting the extraction, dissemination, use and reuse of data in a Work;\nvi. database rights (such as those arising under Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, and under any national implementation thereof, including any amended or successor version of such directive); and\nvii. other similar, equivalent or corresponding rights throughout the world based on applicable law or treaty, and any national implementations thereof.\n\n2. Waiver. To the greatest extent permitted by, but not in contravention of, applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and unconditionally waives, abandons, and surrenders all of Affirmer's Copyright and Related Rights and associated claims and causes of action, whether now known or unknown (including existing as well as future claims and causes of action), in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the ''Waiver''). Affirmer makes the Waiver for the benefit of each member of the public at large and to the detriment of Affirmer's heirs and successors, fully intending that such Waiver shall not be subject to revocation, rescission, cancellation, termination, or any other legal or equitable action to disrupt the quiet enjoyment of the Work by the public as contemplated by Affirmer's express Statement of Purpose.\n\n3. Public License Fallback. Should any part of the Waiver for any reason be judged legally invalid or ineffective under applicable law, then the Waiver shall be preserved to the maximum extent permitted taking into account Affirmer's express Statement of Purpose. In addition, to the extent the Waiver is so judged Affirmer hereby grants to each affected person a royalty-free, non transferable, non sublicensable, non exclusive, irrevocable and unconditional license to exercise Affirmer's Copyright and Related Rights in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the ''License''). The License shall be deemed effective as of the date CC0 was applied by Affirmer to the Work. Should any part of the License for any reason be judged legally invalid or ineffective under applicable law, such partial invalidity or ineffectiveness shall not invalidate the remainder of the License, and in such case Affirmer hereby affirms that he or she will not (i) exercise any of his or her remaining Copyright and Related Rights in the Work or (ii) assert any associated claims and causes of action with respect to the Work, in either case contrary to Affirmer's express Statement of Purpose.\n\n4. Limitations and Disclaimers.\n\na. No trademark or patent rights held by Affirmer are waived, abandoned, surrendered, licensed or otherwise affected by this document.\nb. Affirmer offers the Work as-is and makes no representations or warranties of any kind concerning the Work, express, implied, statutory or otherwise, including without limitation warranties of title, merchantability, fitness for a particular purpose, non infringement, or the absence of latent or other defects, accuracy, or the present or absence of errors, whether or not discoverable, all to the greatest extent permissible under applicable law.\nc. Affirmer disclaims responsibility for clearing rights of other persons that may apply to the Work or any use thereof, including without limitation any person's Copyright and Related Rights in the Work. Further, Affirmer disclaims responsibility for obtaining any necessary consents, permissions or other rights required for any use of the Work.\nd. Affirmer understands and acknowledges that Creative Commons is not a party to this document and has no duty or obligation with respect to this CC0 or use of the Work."
+				);}
+
+
+
+		<!-- This determines the language of program when you first open it. For whatever reason, it breaks the program when I try to move this up. -->
+			changeText("english");
+
+	</script>
+
+</body> 
+</html>

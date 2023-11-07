@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Some basic styling to make the form look nice */
+    form {
+      flex-direction: column;
+      width: 500px;
+      margin: 0 auto;
+      border: 0px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .sectiontitle {
+      text-decoration: underline;
+    }
+    input[type="text"] {
+      width: 400px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      width: 40px;
+      padding: 8px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* Add a style for the checkboxes container */
+    .checkboxes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <!-- The form element with a text input field and a submit button -->
+  <form id="search-form">
+
+  <input type="radio" id="english" name="language" value="english" onclick="changeText(this.value)">
+  <label for="english">English</label>
+  
+  <input type="radio" id="french" name="language" value="french" onclick="changeText(this.value)" checked>
+  <label for="french">Français</label>
+
+<br>
+
+    <input type="text" id="search-query" name="search-query">
+    <input type="submit" value="🔎︎">
+
+
+    <br>
+    <br><input type="checkbox" id="search-engines" checked>
+    <label for="search-engines" class="sectiontitle" id="searchengineslang"></label>
+    <br>
+
+    <input type="checkbox" class="searcheng" id="bing-checkbox" name="bing" value="bing" checked>
+    <label for="bing-checkbox">Bing<br></label>
+
+    <input type="checkbox" class="searcheng" id="duckduckgo-checkbox" name="duckduckgo" value="duckduckgo" checked>
+    <label for="duckduckgo-checkbox">DuckDuckGo<br></label>
+
+    <input type="checkbox" class="searcheng" id="google-checkbox" name="google" value="google" checked>
+    <label for="google-checkbox">Google<br></label>
+
+    <input type="checkbox" class="searcheng" id="wayback-checkbox" name="wayback" value="wayback" checked>
+    <label for="wayback-checkbox">Wayback Machine<br></label>
+
+
+    <br><input type="checkbox" id="articlesearch" unchecked>
+    <label for="articlesearch" class="sectiontitle" id="articlesearchlang"></label><br>
+
+    <input type="checkbox" class="articlesearchclass" id="googlescholar-checkbox" name="googlescholar" value="googlescholar" unchecked>
+    <label for="googlescholar-checkbox">Google Scholar<br></label>
+
+    <input type="checkbox" class="articlesearchclass" id="internarch-checkbox" name="internarch" value="internarch" unchecked>
+    <label for="internarch-checkbox">Internet Archive<br></label>
+
+    <input type="checkbox" class="articlesearchclass" id="jstor-checkbox" name="jstor" value="jstor" unchecked>
+    <label for="jstor-checkbox">JSTOR<br></label>
+
+    <input type="checkbox" class="articlesearchclass" id="sofiacon-checkbox" name="sofiacon" value="sofiacon" unchecked>
+    <label for="sofiacon-checkbox">Sofia (Concordia)<br></label>
+
+
+    <br><input type="checkbox" id="concordances" unchecked>
+    <label for="concordances" class="sectiontitle" id="concordanceslang"></label><br>
+
+    <input type="checkbox" class="concords" id="lingueeenfr-checkbox" name="lingueeenfr" value="lingueeenfr" unchecked>
+    <label for="lingueeenfr-checkbox">Linguee (FR<>EN)<br></label>
+
+    <input type="checkbox" class="concords" id="reversoenfr-checkbox" name="reversoenfr" value="reversoenfr" unchecked>
+    <label for="reversoenfr-checkbox">Reverso (FR<>EN)<br></label>
+
+    <input type="checkbox" class="concords" id="tradooitfren-checkbox" name="tradooitfren" value="tradooitfren" unchecked>
+    <label for="tradooitfren-checkbox">TradooIT (FR=>EN)<br></label>
+
+    <input type="checkbox" class="concords" id="tradooitenfr-checkbox" name="tradooitenfr" value="tradooitenfr" unchecked>
+    <label for="tradooitenfr-checkbox">TradooIT (EN=>FR)<br></label>
+
+
+    <br><input type="checkbox" id="multermbases" unchecked>
+    <label for="multermbases" class="sectiontitle" id="multermbaseslang"></label><br>
+
+    <input type="checkbox" class="multermbaseclass" id="cambridgeenfr-checkbox" name="cambridgeenfr" value="cambridgeenfr" unchecked>
+    <label for="cambridgeenfr-checkbox">Cambridge Dictionnary (EN=>FR)<br></label>
+
+    <input type="checkbox" class="multermbaseclass" id="cambridgefren-checkbox" name="cambridgefren" value="cambridgefren" unchecked>
+    <label for="cambridgefren-checkbox">Cambridge Dictionnary (FR=>EN)<br></label>
+
+    <input type="checkbox" class="multermbaseclass" id="collinsenfr-checkbox" name="collinsenfr" value="collinsenfr" unchecked>
+    <label for="collinsenfr-checkbox">Collins (EN=>FR)<br></label>
+
+    <input type="checkbox" class="multermbaseclass" id="collinsfren-checkbox" name="collinsfren" value="collinsfren" unchecked>
+    <label for="collinsfren-checkbox">Collins (FR=>EN)<br></label>
+
+    <input type="checkbox" class="multermbaseclass" id="gdt-checkbox" name="gdt" value="gdt" unchecked>
+    <label for="gdt-checkbox" id="gdtlang"></label><br>
+
+    <input type="checkbox" class="multermbaseclass" id="termium-checkbox" name="termium" value="termium" unchecked>
+    <label for="termium-checkbox" id="termiumlang"></label>
+
+
+    <br><br><input type="checkbox" id="entermbases" unchecked>
+    <label for="entermbases" class="sectiontitle" id="entermbaseslang"></label><br>
+
+    <input type="checkbox" class="entermbaseclass" id="collinen-checkbox" name="collinen" value="collinen" unchecked>
+    <label for="collinen-checkbox">Collins<br></label>
+
+    <input type="checkbox" class="entermbaseclass" id="encybrit-checkbox" name="encybrit" value="encybrit" unchecked>
+    <label for="encybrit-checkbox">Encyclopedia Britannica<br></label>
+
+    <input type="checkbox" class="entermbaseclass" id="theencycan-checkbox" name="theencycan" value="theencycan" unchecked>
+    <label for="theencycan-checkbox">The Canadian Encyclopedia<br></label>
+
+    <input type="checkbox" class="entermbaseclass" id="wikien-checkbox" name="wikien" value="wikien" unchecked>
+    <label for="wikien-checkbox">Wikipedia<br></label>
+
+
+
+    <br><input type="checkbox" id="enthesauruses" unchecked>
+    <label for="enthesauruses" class="sectiontitle" id="enthesauruseslang"></label><br>
+
+    <input type="checkbox" class="enthesauri" id="collinsthes-checkbox" name="collinsthes" value="collinsthes" unchecked>
+    <label for="collinsthes-checkbox">Collins<br></label>
+
+    <input type="checkbox" class="enthesauri" id="merwebthes-checkbox" name="merwebthes" value="merwebthes" unchecked>
+    <label for="merwebthes-checkbox">Merriam-Webster<br></label>
+
+    <input type="checkbox" class="enthesauri" id="enreversosyn-checkbox" name="enreversosyn" value="enreversosyn" unchecked>
+    <label for="enreversosyn-checkbox">Reverso<br></label>
+
+    <input type="checkbox" class="enthesauri" id="thesaurus-checkbox" name="thesaurus" value="thesaurus" unchecked>
+    <label for="thesaurus-checkbox">Thesaurus.com<br></label>
+
+
+    <br><input type="checkbox" id="frtermbases" unchecked>
+    <label for="frtermbases" class="sectiontitle" id="frtermbaseslang"></label><br>
+
+    <input type="checkbox" class="frtermbaseclass" id="lenccan-checkbox" name="lenccan" value="lenccan" unchecked>
+    <label for="lenccan-checkbox">L'Encyclopédie canadienne<br></label>
+
+    <input type="checkbox" class="frtermbaseclass" id="lerobert-checkbox" name="lerobert" value="lerobert" unchecked>
+    <label for="lerobert-checkbox">Le Robert<br></label>
+
+    <input type="checkbox" class="frtermbaseclass" id="wikifr-checkbox" name="wikifr" value="wikifr" unchecked>
+    <label for="wikifr-checkbox">Wikipédia<br></label>
+
+
+    <br><input type="checkbox" id="frconjug" unchecked>
+    <label for="frconjug" class="sectiontitle" id="frconjuglang"><u>Conjugaisons, cooccurrences, synonymes etc. français</u></label><br>
+
+    <input type="checkbox" class="frconjugclass" id="bescherelle-checkbox" name="bescherelle" value="bescherelle" unchecked>
+    <label for="bescherelle-checkbox" id="bescherellelang"></label><br>
+
+    <input type="checkbox" class="frconjugclass" id="dicdescooc-checkbox" name="dicdescooc" value="dicdescooc" unchecked>
+    <label for="dicdescooc-checkbox">Dictionnaire des coocurences<br></label>
+
+    <input type="checkbox" class="frconjugclass" id="frreversosyn-checkbox" name="frreversosyn" value="dicdescooc" unchecked>
+    <label for="frreversosyn-checkbox">Reverso<br></label>
+
+
+    <br><input type="checkbox" id="grammar" unchecked>
+    <label for="grammar" class="sectiontitle" id="grammarlang"></label><br>
+
+    <input type="checkbox" class="grammarclass" id="bdl-checkbox" name="bdl" value="bdl" unchecked>
+    <label for="bdl-checkbox">Banque de dépannage linguistique (FR)<br></label>
+
+    <input type="checkbox" class="grammarclass" id="languagenavigator-checkbox" name="languagenavigator" value="languagenavigator" unchecked>
+    <label for="languagenavigator-checkbox" id="languagenavigatorlang"></label><br>
+
+    <input type="checkbox" class="grammarclass" id="leguidedured-checkbox" name="leguidedured" value="leguidedured" unchecked>
+    <label for="leguidedured-checkbox">Le guide du rédacteur (FR)<br></label>
+
+    <input type="checkbox" class="grammarclass" id="thecanstyle-checkbox" name="thecanstyle" value="thecanstyle" unchecked>
+    <label for="thecanstyle-checkbox">The Canadian Style (EN)<br></label>
+
+  </form>
+
+  <!-- Load the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+  // Language changing
+function changeText(value) {
+  var searchengineslang = document.getElementById("searchengineslang");
+  var articlesearchlang = document.getElementById("articlesearchlang");
+  var concordanceslang = document.getElementById("concordanceslang");
+  var multermbaseslang = document.getElementById("multermbaseslang");
+  var gdtlang = document.getElementById("gdtlang");
+  var termiumlang = document.getElementById("termiumlang");
+  var entermbaseslang = document.getElementById("entermbaseslang");
+  var enthesauruseslang = document.getElementById("enthesauruseslang");
+  var frtermbaseslang = document.getElementById("frtermbaseslang");
+  var frconjuglang = document.getElementById("frconjuglang");
+  var bescherellelang = document.getElementById("bescherellelang");
+  var grammarlang = document.getElementById("grammarlang");
+  var languagenavigatorlang = document.getElementById("languagenavigatorlang");
+
+
+  if(value === "english") {
+    searchengineslang.innerHTML = "Search Engines";
+    articlesearchlang.innerHTML = "Document Search";
+    concordanceslang.innerHTML = "Concordances";
+    multermbaseslang.innerHTML = "Multilingual Terms";
+    gdtlang.innerHTML = "Grand dictionnaire terminologique (EN, FR and more)";
+    termiumlang.innerHTML = "Termium (EN, FR and more)";
+    entermbaseslang.innerHTML = "English Concepts, Definitions & Terms";
+    enthesauruseslang.innerHTML = "English Synonyms";
+    frtermbaseslang.innerHTML = "French Concepts, Definitions & Terms";
+    frconjuglang.innerHTML = "French Conjugation, Co-occurrences, Synonyms, etc.";
+    bescherellelang.innerHTML = "Bescherelle (use the infinitive)";
+    grammarlang.innerHTML = "Grammatical Information";
+    languagenavigatorlang.innerHTML = "Language Navigator (EN, FR and more)";
+  }
+  else if(value === "french") {
+    searchengineslang.innerHTML = "Moteurs de recherches";
+    articlesearchlang.innerHTML = "Recherche de document";
+    concordanceslang.innerHTML = "Concordances";
+    multermbaseslang.innerHTML = "Termes multilingues";
+    gdtlang.innerHTML = "Grand dictionnaire terminologique (EN, FR et plus)";
+    termiumlang.innerHTML = "Termium (EN, FR et plus)";
+    entermbaseslang.innerHTML = "Concepts, définitions & termes anglais";
+    enthesauruseslang.innerHTML = "Synonymes anglais";
+    frtermbaseslang.innerHTML = "Concepts, définitions & termes français";
+    frconjuglang.innerHTML = "Conjugaison, cooccurrences, synonymes, etc. français";
+    bescherellelang.innerHTML = "Bescherelle (utiliser l'infinitif)";
+    grammarlang.innerHTML = "Information grammaticale";
+    languagenavigatorlang.innerHTML = "Language Navigator (EN, FR et plus)";
+  }
+}
+
+
+  // Select or unselect all search engines
+$("#search-engines").click(function() {
+    if ($(this).is(":checked")) {
+        $(".searcheng").prop("checked", true);
+    } else {
+        $(".searcheng").prop("checked", false);
+    }
+});
+
+  // Select or unselect all search engines
+$("#articlesearch").click(function() {
+    if ($(this).is(":checked")) {
+        $(".articlesearchclass").prop("checked", true);
+    } else {
+        $(".articlesearchclass").prop("checked", false);
+    }
+});
+
+  // Select or unselect all concordances
+$("#concordances").click(function() {
+    if ($(this).is(":checked")) {
+        $(".concords").prop("checked", true);
+    } else {
+        $(".concords").prop("checked", false);
+    }
+});
+
+  // Select or unselect all multilingual terms & defs
+$("#multermbases").click(function() {
+    if ($(this).is(":checked")) {
+        $(".multermbaseclass").prop("checked", true);
+    } else {
+        $(".multermbaseclass").prop("checked", false);
+    }
+});
+
+  // Select or unselect all Englisgh concepts & terms
+$("#entermbases").click(function() {
+    if ($(this).is(":checked")) {
+        $(".entermbaseclass").prop("checked", true);
+    } else {
+        $(".entermbaseclass").prop("checked", false);
+    }
+});
+
+  // Select or unselect all English thesauri
+$("#enthesauruses").click(function() {
+    if ($(this).is(":checked")) {
+        $(".enthesauri").prop("checked", true);
+    } else {
+        $(".enthesauri").prop("checked", false);
+    }
+});
+
+  // Select or unselect all French concepts & terms
+$("#frtermbases").click(function() {
+    if ($(this).is(":checked")) {
+        $(".frtermbaseclass").prop("checked", true);
+    } else {
+        $(".frtermbaseclass").prop("checked", false);
+    }
+});
+
+  // Select or unselect all French coocurences & conjugations
+$("#frconjug").click(function() {
+    if ($(this).is(":checked")) {
+        $(".frconjugclass").prop("checked", true);
+    } else {
+        $(".frconjugclass").prop("checked", false);
+    }
+});
+
+  // Select or unselect all grammar info
+$("#grammar").click(function() {
+    if ($(this).is(":checked")) {
+        $(".grammarclass").prop("checked", true);
+    } else {
+        $(".grammarclass").prop("checked", false);
+    }
+});
+
+  // When the form is submitted, open tabs to search the query on the selected search engines
+$("#search-form").submit(function(event) {
+  // Prevent the form from actually submitting (which would refresh the page)
+  event.preventDefault();
+
+  // Get the search query from the text input field
+  var searchQuery = $("#search-query").val();
+
+  // Check which search engines are selected
+  var bingSelected = $("#bing-checkbox").is(":checked");
+  var duckduckgoSelected = $("#duckduckgo-checkbox").is(":checked");
+  var googleSelected = $("#google-checkbox").is(":checked");
+  var waybackSelected = $("#wayback-checkbox").is(":checked");
+
+  // Check which article search engines are selected
+  var googlescholarSelected = $("#googlescholar-checkbox").is(":checked");
+  var internarchSelected = $("#internarch-checkbox").is(":checked");
+  var jstorSelected = $("#jstor-checkbox").is(":checked");
+  var sofiaconSelected = $("#sofiacon-checkbox").is(":checked");
+
+  // Check which concordance engines are selected
+  var lingueeenfrSelected = $("#lingueeenfr-checkbox").is(":checked");
+  var reversoenfrSelected = $("#reversoenfr-checkbox").is(":checked");
+  var tradooitenfrSelected = $("#tradooitenfr-checkbox").is(":checked");
+  var tradooitfrenSelected = $("#tradooitfren-checkbox").is(":checked");
+
+  // Check which multilingual definitions & terms are selected
+  var cambridgeenfrSelected = $("#cambridgeenfr-checkbox").is(":checked");
+  var cambridgefrenSelected = $("#cambridgefren-checkbox").is(":checked");
+  var collinsenfrSelected = $("#collinsenfr-checkbox").is(":checked");
+  var collinsfrenSelected = $("#collinsfren-checkbox").is(":checked");
+  var gdtSelected = $("#gdt-checkbox").is(":checked");
+  var termiumSelected = $("#termium-checkbox").is(":checked");
+
+  // Check which English definitions & terms are selected
+  var collinenSelected = $("#collinen-checkbox").is(":checked");
+  var encybritSelected = $("#encybrit-checkbox").is(":checked");
+  var theencycanSelected = $("#theencycan-checkbox").is(":checked");
+  var wikienSelected = $("#wikien-checkbox").is(":checked");
+
+  // Check which English thesauri are selected
+  var collinsthesSelected = $("#collinsthes-checkbox").is(":checked");
+  var merwebthesSelected = $("#merwebthes-checkbox").is(":checked");
+  var enreversosynSelected = $("#enreversosyn-checkbox").is(":checked");
+  var thesaurusSelected = $("#thesaurus-checkbox").is(":checked");
+
+  // Check which French terms & concepts are selected
+  var lenccanSelected = $("#lenccan-checkbox").is(":checked");
+  var lerobertSelected = $("#lerobert-checkbox").is(":checked");
+  var wikifrSelected = $("#wikifr-checkbox").is(":checked");
+
+  // Check which French conjugation & coocurence are selected
+  var bescherelleSelected = $("#bescherelle-checkbox").is(":checked");
+  var dicdescoocSelected = $("#dicdescooc-checkbox").is(":checked");
+  var frreversosynSelected = $("#frreversosyn-checkbox").is(":checked");
+
+  // Check which grammar & language rules are selected
+  var bdlSelected = $("#bdl-checkbox").is(":checked");
+  var languagenavigatorSelected = $("#languagenavigator-checkbox").is(":checked");
+  var leguideduredSelected = $("#leguidedured-checkbox").is(":checked");
+  var thecanstyleSelected = $("#thecanstyle-checkbox").is(":checked");
+
+
+
+  // FOR WHATEVER REASON, you need to inverse the "if" functions if you want the webpages that match up to parrallel the order of the checkboxes you need to click.
+
+  // Open tabs to search the query on the selected language & grammar rules
+  if (thecanstyleSelected) {
+    window.open("https://www.btb.termiumplus.gc.ca/tcdnstyl-srch?lang=eng&i=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");
+  }
+  if (leguideduredSelected) {
+    window.open("https://www.btb.termiumplus.gc.ca/redac-srch?lang=eng&i=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");
+  }
+  if (languagenavigatorSelected) {
+    window.open("https://www.noslangues-ourlanguages.gc.ca/en/navigateur-navigator?search_api_views_fulltext=" + searchQuery, "&sort_by=search_api_relevance#resultats-recherche-search-results");
+  }
+  if (bdlSelected) {
+    window.open("https://vitrinelinguistique.oqlf.gouv.qc.ca/resultats-de-recherche?tx_solr%5Bfilter%5D%5B0%5D=type_stringM%253Abdl&tx_solr%5Bfilter%5D%5B2%5D=terme%253A1&tx_solr%5Bq%5D=" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the selected French conjugations & synonyms etc. 
+  if (frreversosynSelected) {
+    window.open("https://synonyms.reverso.net/synonyme/fr/" + searchQuery, "_blank");
+  }
+  if (dicdescoocSelected) {
+    window.open("https://www.btb.termiumplus.gc.ca/cooc-srch?lang=fra&i=&lettr=&cur=1&nmbr=&comencsrch.x=0&comencsrch.y=0&srchtxt=" + searchQuery, "_blank");
+  }
+  if (bescherelleSelected) {
+    window.open("https://conjugaison.bescherelle.com/verbes/" + searchQuery, "_blank");
+  }
+
+  // Open tabs to search the query on the selected French terms & concepts
+  if (wikifrSelected) {
+    window.open("https://fr.wikipedia.org/wiki/" + searchQuery, "_blank");
+  }
+  if (lerobertSelected) {
+    window.open("https://dictionnaire.lerobert.com/definition/" + searchQuery, "_blank");
+  }
+  if (lenccanSelected) {
+    window.open("https://www.thecanadianencyclopedia.ca/fr/cherchez?search=" + searchQuery, "_blank");
+  }
+
+  // Open tabs to search the query on the selected thesauri
+  if (thesaurusSelected) {
+    window.open("https://www.thesaurus.com/browse/" + searchQuery, "_blank");
+  }
+  if (enreversosynSelected) {
+    window.open("https://synonyms.reverso.net/synonym/en/" + searchQuery, "_blank");
+  }
+  if (merwebthesSelected) {
+    window.open("https://www.merriam-webster.com/thesaurus/" + searchQuery, "_blank");
+  }
+  if (collinsthesSelected) {
+    window.open("https://www.collinsdictionary.com/dictionary/english-thesaurus/" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the English concepts & terms
+  if (wikienSelected) {
+    window.open("https://en.wikipedia.org/wiki/" + searchQuery, "_blank");
+  }
+  if (theencycanSelected) {
+    window.open("https://www.thecanadianencyclopedia.ca/en/search?search=" + searchQuery, "_blank");
+  }
+  if (encybritSelected) {
+    window.open("https://www.britannica.com/search?query=" + searchQuery, "_blank");
+  }
+  if (collinenSelected) {
+    window.open("https://www.collinsdictionary.com/dictionary/english/" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the multilingual concepts & terms
+  if (termiumSelected) {
+    window.open("https://www.btb.termiumplus.gc.ca/tpv2alpha/alpha-eng.html?lang=eng&i=1&srchtxt=" + searchQuery, "&codom2nd_wet=1#resultrecs");
+  }
+  if (gdtSelected) {
+    window.open("https://vitrinelinguistique.oqlf.gouv.qc.ca/resultats-de-recherche?tx_solr[filter][1]=type_stringM%3Agdt&tx_solr[filter][2]=terme%3A1&tx_solr[q]=" + searchQuery, "_blank");
+  }
+  if (collinsfrenSelected) {
+    window.open("https://www.collinsdictionary.com/dictionary/french-english/" + searchQuery, "_blank");
+  }
+  if (collinsenfrSelected) {
+    window.open("https://www.collinsdictionary.com/dictionary/english-french/" + searchQuery, "_blank");
+  }
+  if (cambridgefrenSelected) {
+    window.open("https://dictionary.cambridge.org/dictionary/french-english/" + searchQuery, "_blank");
+  }
+  if (cambridgeenfrSelected) {
+    window.open("https://dictionary.cambridge.org/dictionary/english-french/" + searchQuery, "_blank");
+  }
+
+  // Open tabs to search the query on the selected concordances
+  if (tradooitenfrSelected) {
+    window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=en&langTo=fr&q=" + searchQuery, "_blank");
+  }
+  if (tradooitfrenSelected) {
+    window.open("https://www.tradooit.com/info.php?btn-recherche.x=0&btn-recherche.y=0&langFrom=fr&langTo=en&q=" + searchQuery, "_blank");
+  }
+  if (reversoenfrSelected) {
+    window.open("https://dictionary.reverso.net/english-french/" + searchQuery, "_blank");
+  }
+  if (lingueeenfrSelected) {
+    window.open("https://www.linguee.com/english-french/search?source=auto&query=" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the selected article search engines
+  if (sofiaconSelected) {
+    window.open("https://concordiauniversity.on.worldcat.org/search?databaseList=&queryString=" + searchQuery, "_blank");
+  }
+  if (jstorSelected) {
+    window.open("https://www.jstor.org/action/doBasicSearch?Query=" + searchQuery, "_blank");
+  }
+  if (internarchSelected) {
+    window.open("https://archive.org/search.php?sin=&query=" + searchQuery, "_blank");
+  }
+  if (googlescholarSelected) {
+    window.open("https://scholar.google.ca/scholar?hl=en&as_sdt=0%2C5&btnG=&q=" + searchQuery, "_blank");
+  }
+
+
+  // Open tabs to search the query on the selected search engines
+  if (waybackSelected) {
+    window.open("https://web.archive.org/web/*/" + searchQuery, "_blank");
+  }
+  if (googleSelected) {
+    window.open("https://www.google.com/search?q=" + searchQuery, "_blank");
+  }
+  if (duckduckgoSelected) {
+    window.open("https://duckduckgo.com/?q=" + searchQuery, "_blank");
+  }
+  if (bingSelected) {
+    window.open("https://www.bing.com/search?q=" + searchQuery, "_blank");
+  }
+
+  
+});
+  //Call changeText function and pass "french" as an argument when the page loads.
+  
+changeText("french");
+</script>
+ </body> 
+</html>
